@@ -1,36 +1,27 @@
 .slider{
-    height:calc(100vh - 80px);
-    width: 100vw;
     position: relative;
+  height: 100%;
 }
-.container-sli{
-    width: 300vw;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    transition: all 1s ease;
+
+.swiper {
+  width: 100%;
+  height: 100%;
 }
-.container-sli img{
-    width: 100vw;
-    height: 100%;
-    object-fit: cover;
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.slider-icons{
-    width: fit-content !important;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    display: flex;
-    width: 100px;
-    bottom: 100px;
-    gap: 10px;
-}
-.slider-icon1{
-    width: 50px;
-    height: 50px;
-    border: 1px solid #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

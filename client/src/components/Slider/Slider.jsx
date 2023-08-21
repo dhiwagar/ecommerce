@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
-import './Slider.css'
-import EastOutlinedIcon from "@mui/icons-material/EastOutlined";
-import WestOutlinedIcon from "@mui/icons-material/WestOutlined";
-function Slider() {
 
-  const [currentslide,setcurrentslide]=useState(0)
+import './Slider.css'
+// import required modules
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+function Slider() {
 
   const data = [
     "https://images.pexels.com/photos/1549200/pexels-photo-1549200.jpeg?auto=compress&cs=tinysrgb&w=1600",
@@ -12,32 +18,32 @@ function Slider() {
     "https://images.pexels.com/photos/837140/pexels-photo-837140.jpeg?auto=compress&cs=tinysrgb&w=1600",
   ];
 
-  const prevslide=()=>{
-    setcurrentslide(currentslide === 0 ? 2 :(pre)=>pre -1)
-    
-  }
-  const nextslide=()=>{
-    setcurrentslide(currentslide === 2 ? 0 :(pre)=>pre +1)
-  }
+
   return (
     <div className='slider'>
-      <div className="container-sli"  style={{transform:`translateX(-${currentslide * 100}vw)`}}>
-        <img src={data[0]}alt="" />
-        <img src={data[1]}alt="" />
-        <img src={data[2]}alt="" />
+      <Swiper   spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper" >
+        {data.map((imgs)=>(
+          <SwiperSlide>
+            <img src={imgs} alt="" />        
+             </SwiperSlide>
+        ))}
+        
+     
+      </Swiper>
       </div>
-      <div className="slider-icons">
-        <div className="slider-icon1" onClick={prevslide}>
-          <WestOutlinedIcon/>
-          
-        </div>
-        <div className="slider-icon1" onClick={nextslide}>
-          <EastOutlinedIcon/>
 
-        </div>
-      </div>
-
-    </div>
+    
   )
 }
 
